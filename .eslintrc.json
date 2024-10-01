@@ -1,13 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
   "extends": ["next/core-web-vitals", "next/typescript", "prettier", "plugin:tailwindcss/recommended"],
-  "plugins": ["tailwindcss", "check-file"],
+  "plugins": ["tailwindcss", "check-file", "n"],
   "rules": {
     "prefer-arrow-callback": ["error"],
     "prefer-template": ["error"],
     "@next/next/no-html-link-for-pages": "off",
     "tailwindcss/no-custom-classname": "off",
     "tailwindcss/classnames-order": "error",
+    "n/no-process-env": ["error", { "allowlist": ["NODE_ENV"] }],
     "check-file/filename-naming-convention": [
       "error",
       {
