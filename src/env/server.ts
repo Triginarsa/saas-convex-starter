@@ -4,7 +4,9 @@ import { z, ZodError } from "zod"
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "production"]),
-    DATABASE_URL: z.string().url(),
+    CONVEX_DEPLOYMENT: z.string({
+      message: "Invalid URL. Please run: npx convex dev",
+    }),
   },
   onValidationError: (error: ZodError) => {
     console.error(

@@ -3,11 +3,12 @@ import { z, ZodError } from "zod"
 
 export const env = createEnv({
   client: {
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
+    NEXT_PUBLIC_CONVEX_URL: z
+      .string()
+      .url({ message: "Invalid URL. Please run: npx convex dev" }),
   },
   runtimeEnv: {
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
-      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    NEXT_PUBLIC_CONVEX_URL: process.env.NEXT_PUBLIC_CONVEX_URL,
   },
   onValidationError: (error: ZodError) => {
     console.error(
