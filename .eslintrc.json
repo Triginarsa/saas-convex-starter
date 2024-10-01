@@ -1,3 +1,33 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": ["next/core-web-vitals", "next/typescript", "prettier", "plugin:tailwindcss/recommended"],
+  "plugins": ["tailwindcss", "check-file"],
+  "rules": {
+    "prefer-arrow-callback": ["error"],
+    "prefer-template": ["error"],
+    "@next/next/no-html-link-for-pages": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{ts,tsx}": "KEBAB_CASE"
+      },
+      {
+        "ignoreMiddleExtensions": true
+      }
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "src/**/!^[.*": "KEBAB_CASE"
+      }
+    ]
+  },
+  "settings": {
+    "tailwindcss": {
+      "callees": ["cn", "cva"],
+      "config": "./tailwind.config.js"
+    }
+  }
 }
