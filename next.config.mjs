@@ -7,6 +7,8 @@ const jiti = createJiti(fileURLToPath(import.meta.url))
 jiti("./src/env/server.ts")
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  reactStrictMode: true,
+}
 
 export default nextConfig

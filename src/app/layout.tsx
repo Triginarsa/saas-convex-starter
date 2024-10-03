@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
+import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server"
 
-import { ConvexClientProvider } from "@/components/convex-client-provider"
-import { ThemeProvider } from "@/components/theme-switcher/theme-provider"
+import { ConvexClientProvider } from "./convex-client-provider"
+import { ThemeProvider } from "./theme-provider"
 
 import "./globals.css"
 
@@ -28,28 +29,27 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>"
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        suppressHydrationWarning
-      >
-        <ConvexClientProvider>
+    <ConvexAuthNextjsServerProvider>
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <link
+            rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>"
+          />
+        </head>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <ConvexClientProvider>{children}</ConvexClientProvider>
           </ThemeProvider>
-        </ConvexClientProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ConvexAuthNextjsServerProvider>
   )
 }
