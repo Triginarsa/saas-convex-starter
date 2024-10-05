@@ -18,7 +18,7 @@ async function DashboardContent() {
     <main className="flex max-h-screen grow flex-col overflow-hidden">
       <div className="flex items-center justify-between border-b p-4">
         <h1>Welcome to Dashboard</h1>
-        <div className="flex flex-row gap-4 items-center">
+        <div className="flex flex-row items-center gap-4">
           <Avatar>
             <AvatarImage src={profile.image} />
             <AvatarFallback>👤</AvatarFallback>

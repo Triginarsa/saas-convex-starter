@@ -8,7 +8,6 @@
     "@next/next/no-html-link-for-pages": "off",
     "tailwindcss/no-custom-classname": "off",
     "tailwindcss/classnames-order": "error",
-    "n/no-process-env": ["error", { "allowlist": ["NODE_ENV"] }],
     "check-file/filename-naming-convention": [
       "error",
       {

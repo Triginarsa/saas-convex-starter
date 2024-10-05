@@ -19,7 +19,7 @@ import {
 
 export default function EmailOtpForm() {
   return (
-    <Card className="sm:mx-auto sm:w-full sm:max-w-md p-0 md:p-6">
+    <Card className="p-0 sm:mx-auto sm:w-full sm:max-w-md md:p-6">
       <CardHeader>
         <CardTitle className="text-base">
           <div className="flex content-center">
@@ -32,13 +32,13 @@ export default function EmailOtpForm() {
         <CardDescription>
           We have sent you an email with a one-time password (OTP) to verify
           your email address.
-          <div className="mt-4 font-normal text-base text-primary">
+          <div className="text-primary mt-4 text-base font-normal">
             janedoe@example.com
           </div>
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-4 md:gap-6 mt-4">
+        <div className="mt-4 grid gap-4 md:gap-6">
           <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
             <InputOTPGroup>
               <InputOTPSlot index={0} />
@@ -50,8 +50,8 @@ export default function EmailOtpForm() {
             </InputOTPGroup>
           </InputOTP>
           <div className="text-muted-foreground text-sm">
-            Didn't receive the email?{" "}
-            <Link href="#" className="hover:underline text-primary">
+            Didn&apos;t receive the email?{" "}
+            <Link href="#" className="text-primary hover:underline">
               Resend OTP
             </Link>
           </div>

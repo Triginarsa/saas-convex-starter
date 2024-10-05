@@ -9,12 +9,12 @@ export function SignInWithGoogle() {
   const { signIn } = useAuthActions()
   return (
     <Button
-      className="flex-1 w-full"
+      className="w-full flex-1"
       variant="outline"
       type="button"
       onClick={() => void signIn("google", { redirectTo: "/dashboard" })}
     >
-      <FcGoogle className="mr-2 h-4 w-4" /> Google
+      <FcGoogle className="mr-2 size-4" /> Google
     </Button>
   )
 }

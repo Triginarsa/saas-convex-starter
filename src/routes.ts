@@ -12,7 +12,12 @@ export const publicRoutes = ["/"]
  * @type {string[]}
  */
 
-export const authRoutes = ["/signin"]
+export const authRoutes = [
+  "/login",
+  "/register",
+  "/reset-password",
+  "/forgot-password",
+]
 
 /**
  * An array of routes that are protected
@@ -28,5 +33,5 @@ export const protectedRoutes = ["/dashboard(.*)"]
  */
 
 export const DEFAULT_LOGIN_REDIRECT = "/dashboard"
-export const DEFAULT_UNAUTHORIZED_REDIRECT = "/signin"
+export const DEFAULT_UNAUTHORIZED_REDIRECT = "/login"
 export const DEFAULT_LOGOUT_REDIRECT = "/"
