@@ -1,7 +1,6 @@
 "use client"
 
 import { useCallback, useState } from "react"
-import { useRouter } from "next/navigation"
 import { useAuthActions } from "@convex-dev/auth/react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -19,21 +18,19 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
-import { signInFormBasicSchema } from "../../schemas/schema"
+import { forgotPasswordFormSchema } from "../../schemas/schema"
 
-type FormValues = z.infer<typeof signInFormBasicSchema>
+type FormValues = z.infer<typeof forgotPasswordFormSchema>
 
-export default function SignInPasswordBasicForm() {
+export default function ForgotPasswordForm() {
   const { signIn } = useAuthActions()
-  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<FormValues>({
-    resolver: zodResolver(signInFormBasicSchema),
+    resolver: zodResolver(forgotPasswordFormSchema),
     defaultValues: {
       email: "",
-      password: "",
-      flow: "signIn",
+      flow: "reset",
     },
   })
 
@@ -43,17 +40,16 @@ export default function SignInPasswordBasicForm() {
 
       try {
         await signIn("password", values)
-        toast.success("Welcome back!", {
-          description: "You have successfully signed in.",
+        toast.success("Please check your email", {
+          description: "We have sent you a password reset code.",
         })
-        router.push("/dashboard")
       } catch (error) {
-        console.error("Sign up error:", error)
+        console.error("Forgot Password error:", error)
       } finally {
         setIsLoading(false)
       }
     },
-    [signIn, router]
+    [signIn]
   )
 
   return (
@@ -80,26 +76,8 @@ export default function SignInPasswordBasicForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel htmlFor="password">Password</FormLabel>
-              <FormControl>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="********"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? "Login in... " : "Login"}
+          {isLoading ? "Sending Code... " : "Send Code"}
         </Button>
       </form>
     </Form>

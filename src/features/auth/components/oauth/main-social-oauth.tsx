@@ -1,16 +1,19 @@
 import { Separator } from "@/components/ui/separator"
 
+import { SignInWithDiscord } from "./sign-in-with-discord"
 import { SignInWithGitHub } from "./sign-in-with-github"
 import { SignInWithGoogle } from "./sign-in-with-google"
 
 interface MainSocialOauthProps {
   showGitHub?: boolean
   showGoogle?: boolean
+  showDiscord?: boolean
 }
 
 export default function MainSocialOauth({
   showGitHub = true,
   showGoogle = true,
+  showDiscord = true,
 }: MainSocialOauthProps) {
   const hasAnyProvider = showGitHub || showGoogle
 
@@ -28,6 +31,7 @@ export default function MainSocialOauth({
       <div className="flex gap-2">
         {showGitHub && <SignInWithGitHub />}
         {showGoogle && <SignInWithGoogle />}
+        {showDiscord && <SignInWithDiscord />}
       </div>
     </div>
   )
